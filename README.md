@@ -1,29 +1,29 @@
-# Welcome to your Lovable project
+# BT-QR Code Generator Project
 
-This project was built with [Lovable](https://lovable.dev).
+A comprehensive QR code generator platform featuring dynamic/static QR generation, white-labeled landing pages, scan analytics, and a multi-step design wizard.
 
-## Build with Lovable
+## Tech Stack
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Framework**: TanStack Start (React + Nitro)
+- **Language**: TypeScript
+- **Database / Auth**: Supabase
+- **Styling**: Tailwind CSS
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+To run the project locally, install the dependencies and start the Vite development server:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
 
-## Built with
+The application will be accessible at [http://localhost:8080/](http://localhost:8080/).
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Production Build
+
+To build the application for production:
+
+```sh
+npm run build
+```

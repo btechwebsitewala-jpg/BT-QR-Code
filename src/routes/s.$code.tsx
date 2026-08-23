@@ -9,7 +9,7 @@ import { getSharedQr } from "@/lib/qr/share.functions";
 export const Route = createFileRoute("/s/$code")({
   loader: ({ params }) => getSharedQr({ data: { code: params.code } }),
   head: ({ loaderData }) => {
-    const origin = loaderData?.origin ?? "https://qr-create-magic.lovable.app";
+    const origin = loaderData?.origin ?? "https://github.com/btechwebsitewala-jpg/BT-QR-Code";
     const code = loaderData?.code ?? "";
     const name = loaderData?.qr?.name ?? "BT-QR code";
     const image = `${origin}/api/public/og/${code}.png`;

@@ -1,10 +1,10 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { AlertTriangle, Loader2 } from "lucide-react";
+import { AlertTriangle, Eye, EyeOff, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 
-import logoAsset from "@/assets/bt-qr-logo.png.asset.json";
+import logoAsset from "@/assets/bt-qr-logo.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -48,6 +48,8 @@ function ResetPasswordPage() {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [busy, setBusy] = useState(false);
   const [state, setState] = useState<LinkState>("checking");
   const [problem, setProblem] = useState<string>("");
@@ -170,7 +172,7 @@ function ResetPasswordPage() {
     <div className="flex min-h-screen items-center justify-center bg-surface-gradient px-4 py-12">
       <div className="w-full max-w-md rounded-3xl border border-border bg-card p-6 shadow-brand sm:p-8">
         <Link to="/" className="flex items-center justify-center gap-2">
-          <img src={logoAsset.url} alt="BT-QR logo" className="size-9 rounded-xl bg-white object-contain p-0.5" />
+          <img src={logoAsset} alt="BT-QR logo" className="size-9 rounded-xl bg-white object-contain p-0.5" />
           <span className="font-display text-lg font-bold">BT-QR</span>
         </Link>
         <h1 className="mt-6 text-center text-2xl font-bold">Choose a new password</h1>
@@ -214,27 +216,47 @@ function ResetPasswordPage() {
           <div className="mt-6 space-y-4">
             <div>
               <Label htmlFor="new-password">New password</Label>
-              <Input
-                id="new-password"
-                type="password"
-                className="mt-2"
-                autoComplete="new-password"
-                maxLength={72}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-              />
+              <div className="relative mt-2">
+                <Input
+                  id="new-password"
+                  type={showPassword ? "text" : "password"}
+                  className="pr-10"
+                  autoComplete="new-password"
+                  maxLength={72}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground focus:outline-none"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                </button>
+              </div>
             </div>
             <div>
               <Label htmlFor="confirm-password">Confirm password</Label>
-              <Input
-                id="confirm-password"
-                type="password"
-                className="mt-2"
-                autoComplete="new-password"
-                maxLength={72}
-                value={confirm}
-                onChange={(event) => setConfirm(event.target.value)}
-              />
+              <div className="relative mt-2">
+                <Input
+                  id="confirm-password"
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="pr-10"
+                  autoComplete="new-password"
+                  maxLength={72}
+                  value={confirm}
+                  onChange={(event) => setConfirm(event.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground focus:outline-none"
+                  aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
+                >
+                  {showConfirmPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                </button>
+              </div>
             </div>
             <Button
               className="w-full bg-brand-gradient text-primary-foreground"

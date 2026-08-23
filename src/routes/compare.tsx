@@ -27,15 +27,16 @@ const rows: { feature: string; dynamic: boolean | string; staticQr: boolean | st
   { feature: "Works without our servers", dynamic: false, staticQr: true },
   { feature: "Smaller, simpler QR pattern", dynamic: true, staticQr: false },
   { feature: "Best for long content (vCard, WiFi)", dynamic: false, staticQr: true },
-  { feature: "Included on the Free plan", dynamic: true, staticQr: "Premium" },
+  { feature: "Available on Free Plan", dynamic: "5 Codes", staticQr: "Unlimited" },
+  { feature: "3D Character Avatar Mode", dynamic: "Lite / Premium", staticQr: false },
 ];
 
 const competitors = [
-  { feature: "17 content types", qrverse: true, others: "Usually 8–10" },
-  { feature: "Live customisation preview", qrverse: true, others: true },
-  { feature: "Logo QR at no cost", qrverse: true, others: "Paid" },
-  { feature: "PNG, JPG, SVG, PDF, EPS export", qrverse: true, others: "PNG only on free" },
-  { feature: "Watermark-free downloads", qrverse: true, others: false },
+  { feature: "17 content types", btqr: true, others: "Usually 8–10" },
+  { feature: "Live customisation preview", btqr: true, others: true },
+  { feature: "Logo QR at no cost", btqr: true, others: "Paid" },
+  { feature: "PNG, JPG, SVG, PDF, EPS export", btqr: true, others: "PNG only on free" },
+  { feature: "Watermark-free downloads", btqr: true, others: false },
 ];
 
 function Cell({ value }: { value: boolean | string }) {
@@ -101,7 +102,7 @@ function Compare() {
                 <tr key={row.feature} className="border-t border-border">
                   <td className="p-4 text-sm">{row.feature}</td>
                   <td className="p-4 text-center">
-                    <Cell value={row.qrverse} />
+                    <Cell value={row.btqr} />
                   </td>
                   <td className="p-4 text-center">
                     <Cell value={row.others} />

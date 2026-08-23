@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import logoAsset from "@/assets/bt-qr-logo.png.asset.json";
+import logoAsset from "@/assets/bt-qr-logo.png";
 
 export function SiteFooter() {
   return (
@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <img src={logoAsset.url} alt="BT-QR logo" className="size-8 rounded-xl bg-white object-contain p-0.5" />
+            <img src={logoAsset} alt="BT-QR logo" className="size-8 rounded-xl bg-white object-contain p-0.5" />
             <span className="font-display font-bold">BT-QR</span>
           </div>
           <p className="mt-3 text-sm text-muted-foreground">

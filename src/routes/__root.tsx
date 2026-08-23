@@ -11,8 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/hooks/useAuth";
+import { ThemeProvider } from "@/hooks/useTheme";
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 
 function NotFoundComponent() {
@@ -40,9 +40,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -118,8 +115,47 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+              try{
+                var t=localStorage.getItem("bt_theme_preference");
+                if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)||(t==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                  document.documentElement.classList.add("dark");
+                }else{
+                  document.documentElement.classList.remove("dark");
+                }
+              }catch(e){}
+
+              function killBadges(){
+                try{
+                  var selectors = ['#lovable-badge', '.lovable-badge', 'lovable-tag', '[id*="lovable"]', '[class*="lovable"]', '[id*="gpteng"]', '[class*="gpteng"]', 'a[href*="lovable.dev"]'];
+                  selectors.forEach(function(s){
+                    document.querySelectorAll(s).forEach(function(el){
+                      if(el && el.parentNode && el.tagName!=='HTML' && el.tagName!=='BODY') el.remove();
+                    });
+                  });
+                  document.querySelectorAll('*').forEach(function(el){
+                    if(el && el.children && el.children.length === 0 && el.textContent && el.textContent.includes('Edit with Lovable')){
+                      var parent = el.closest('div') || el;
+                      if(parent && parent.parentNode && parent.tagName!=='BODY' && parent.tagName!=='HTML') parent.remove();
+                    }
+                  });
+                }catch(e){}
+              }
+
+              if(typeof window !== 'undefined'){
+                killBadges();
+                document.addEventListener('DOMContentLoaded', killBadges);
+                window.addEventListener('load', killBadges);
+                var obs = new MutationObserver(killBadges);
+                if(document.documentElement) obs.observe(document.documentElement, { childList: true, subtree: true });
+              }
+            })();`,
+          }}
+        />
         <HeadContent />
       </head>
       <body>
@@ -135,11 +171,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <Toaster richColors position="top-center" />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+          <Toaster richColors position="top-center" />
+        </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

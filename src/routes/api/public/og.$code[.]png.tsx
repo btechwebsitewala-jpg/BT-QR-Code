@@ -12,7 +12,7 @@ export const Route = createFileRoute("/api/public/og/$code.png")({
         const { renderQrOgPng } = await import("@/lib/qr/og-image.server");
         const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-        let value = "https://qr-create-magic.lovable.app";
+        let value = "https://github.com/btechwebsitewala-jpg/BT-QR-Code";
         let title = "BT-QR CODE";
         let caption = "";
         let style: Record<string, unknown> | undefined;
