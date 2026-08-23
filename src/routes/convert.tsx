@@ -94,14 +94,14 @@ function ConvertPage() {
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_320px]">
-          <section className="rounded-3xl border border-border bg-card p-6 shadow-sm">
+          <section className="rounded-3xl border border-border bg-card p-4 sm:p-6 shadow-sm">
             <div
               onDragOver={(event) => event.preventDefault()}
               onDrop={(event) => {
                 event.preventDefault();
                 void handleFile(event.dataTransfer.files?.[0]);
               }}
-              className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-border bg-secondary/40 p-10 text-center"
+              className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-border bg-secondary/40 p-6 sm:p-10 text-center"
             >
               <input
                 ref={inputRef}
@@ -170,7 +170,7 @@ function ConvertPage() {
           </section>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-3xl border border-border bg-card p-6 text-center shadow-sm">
+            <div className="rounded-3xl border border-border bg-card p-4 sm:p-6 text-center shadow-sm">
               <p className="text-sm font-semibold">QR for your link</p>
               <div className="mt-4 flex justify-center rounded-2xl bg-secondary/40 p-4">
                 <QRPreview value={link || "https://bt-qr.app"} style={DEFAULT_STYLE} size={220} />

@@ -181,7 +181,7 @@ function Pricing() {
         </div>
 
         {/* 3 Pricing Cards Grid (Free, Lite, Premium) */}
-        <div className="mt-12 grid gap-8 lg:grid-cols-3 lg:items-stretch">
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
           {/* 1. FREE PLAN */}
           <div className="flex flex-col justify-between rounded-3xl border border-border/70 bg-card/70 p-7 shadow-sm backdrop-blur-md transition-all hover:border-border hover:shadow-md">
             <div>
@@ -360,7 +360,7 @@ function Pricing() {
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-border/80 bg-card shadow-sm backdrop-blur-md">
             <div className="overflow-x-auto">
-              <table className="w-full text-left">
+              <table className="w-full min-w-[600px] text-left">
                 <thead>
                   <tr className="border-b border-border/70 bg-secondary/50 text-sm">
                     <th className="p-4 sm:p-5 font-semibold text-foreground">Features</th>

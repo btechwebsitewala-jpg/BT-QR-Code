@@ -154,7 +154,7 @@ export function QRWizard({ initialType = "url" }: { initialType?: QRTypeId }) {
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
       <div className="space-y-6">
-        <section className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6">
+        <section className="rounded-3xl border border-border bg-card p-4 shadow-sm sm:p-6">
           <StepHeader step={1} title="Add content" hint={def.description} />
           <div className="mt-5">
             <TypeSelector
@@ -182,7 +182,7 @@ export function QRWizard({ initialType = "url" }: { initialType?: QRTypeId }) {
           ) : null}
         </section>
 
-        <section className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6">
+        <section className="rounded-3xl border border-border bg-card p-4 shadow-sm sm:p-6">
           <StepHeader step={2} title="Customise" hint="Pick a template, colours, frame and logo." />
           <div className="mt-5">
             <CustomizePanel
@@ -201,10 +201,10 @@ export function QRWizard({ initialType = "url" }: { initialType?: QRTypeId }) {
       </div>
 
       <aside className="lg:sticky lg:top-24 lg:self-start">
-        <div className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6">
+        <div className="rounded-3xl border border-border bg-card p-4 shadow-sm sm:p-6">
           <StepHeader step={3} title="Generate &amp; download" />
           <div className="mt-5 flex justify-center rounded-2xl bg-secondary/40 p-4">
-            <QRPreview value={encodedValue || "https://qrverse.app"} style={style} size={260} />
+            <QRPreview value={encodedValue || "https://qrverse.app"} style={style} size={220} />
           </div>
 
           {error ? (

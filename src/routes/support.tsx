@@ -68,10 +68,10 @@ function Support() {
           Browse the most common questions below, or reach out and we will get back to you.
         </p>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { icon: MessageCircle, title: "Live chat", text: "Mon–Fri, 9:00–18:00 CET" },
-            { icon: Mail, title: "Email", text: "hello@qrverse.app" },
+            { icon: Mail, title: "Email", text: "support.btqrcodegenerate@gmail.com" },
             { icon: LifeBuoy, title: "Premium support", text: "Replies within 24 hours" },
           ].map((card) => (
             <div key={card.title} className="rounded-2xl border border-border bg-card p-5">

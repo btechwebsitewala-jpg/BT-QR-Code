@@ -63,7 +63,8 @@ function Compare() {
         </p>
 
         <section className="mt-10 overflow-hidden rounded-3xl border border-border bg-card">
-          <table className="w-full text-left">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[500px] text-left">
             <thead className="bg-secondary/50 text-sm">
               <tr>
                 <th className="p-4 font-semibold">Feature</th>
@@ -85,11 +86,13 @@ function Compare() {
               ))}
             </tbody>
           </table>
+          </div>
         </section>
 
         <h2 className="mt-14 text-2xl font-bold">BT-QR vs other generators</h2>
         <section className="mt-5 overflow-hidden rounded-3xl border border-border bg-card">
-          <table className="w-full text-left">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[500px] text-left">
             <thead className="bg-secondary/50 text-sm">
               <tr>
                 <th className="p-4 font-semibold">Feature</th>
@@ -111,6 +114,7 @@ function Compare() {
               ))}
             </tbody>
           </table>
+          </div>
         </section>
 
         <div className="mt-12 flex flex-wrap gap-3">

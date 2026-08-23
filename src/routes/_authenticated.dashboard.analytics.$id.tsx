@@ -156,8 +156,8 @@ function Analytics() {
         </div>
       </section>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-2">
-        <section className="rounded-3xl border border-border bg-card p-5">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+        <section className="rounded-3xl border border-border bg-card p-4 sm:p-5">
           <h2 className="text-lg font-bold">Device types</h2>
           {devices.length === 0 ? (
             <p className="mt-3 text-sm text-muted-foreground">No scans recorded yet.</p>
@@ -177,7 +177,7 @@ function Analytics() {
           )}
         </section>
 
-        <section className="rounded-3xl border border-border bg-card p-5">
+        <section className="rounded-3xl border border-border bg-card p-4 sm:p-5">
           <h2 className="text-lg font-bold">Locations &amp; browsers</h2>
           {countries.length === 0 && browsers.length === 0 ? (
             <p className="mt-3 text-sm text-muted-foreground">No scans recorded yet.</p>

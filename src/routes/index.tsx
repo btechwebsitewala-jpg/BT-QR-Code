@@ -8,6 +8,7 @@ import {
   Globe,
   Layers,
   Lock,
+  Mail,
   Palette,
   QrCode,
   RefreshCw,
@@ -203,7 +204,7 @@ function Index() {
           </div>
 
           {/* Quick Stats Banner */}
-          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 rounded-2xl border border-border/70 bg-card/70 p-4 shadow-sm backdrop-blur-md sm:grid-cols-4 sm:p-6">
+          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 rounded-2xl border border-border/70 bg-card/70 p-3 sm:p-4 sm:grid-cols-4 shadow-sm backdrop-blur-md">
             {STATS.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center justify-center p-2 text-center">
                 <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -370,6 +371,30 @@ function Index() {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+        </section>
+
+        {/* Contact Support Section */}
+        <section className="mx-auto my-12 w-full max-w-7xl px-4 sm:px-6 sm:my-16">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-border/70 bg-card/70 p-8 text-center shadow-sm backdrop-blur-md sm:p-12">
+            <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+              Need Help? We're Here for You
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+              Have questions or need assistance with your QR codes? Reach out to our support team.
+            </p>
+            <div className="mt-6 flex flex-col items-center justify-center gap-3">
+              <a 
+                href="mailto:support.btqrcodegenerate@gmail.com" 
+                className="inline-flex items-center gap-2 rounded-xl bg-primary/10 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
+              >
+                <Mail className="size-4" />
+                support.btqrcodegenerate@gmail.com
+              </a>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/support">Visit Support Page</Link>
+              </Button>
+            </div>
           </div>
         </section>
 

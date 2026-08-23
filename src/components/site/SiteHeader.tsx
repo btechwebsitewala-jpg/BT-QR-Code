@@ -96,13 +96,13 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-2 px-3 sm:gap-4 sm:px-6">
         {/* Left Area: 3-line Menu Button + Logo */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Hamburger Menu on the LEFT (Opens Slide-out Drawer) */}
+          {/* Hamburger Menu on the LEFT (Opens Slide-out Drawer) - Mobile Only */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
-                className="size-9 rounded-xl border border-border/60 bg-card/60 transition-colors hover:bg-secondary hover:text-foreground"
+                className="lg:hidden size-9 rounded-xl border border-border/60 bg-card/60 transition-colors hover:bg-secondary hover:text-foreground"
                 aria-label="Open navigation menu"
               >
                 <Menu className="size-5" />
@@ -120,11 +120,6 @@ export function SiteHeader() {
                   />
                   <span className="font-display font-bold text-lg text-foreground">BT-QR</span>
                 </Link>
-                <SheetClose asChild>
-                  <Button variant="ghost" size="icon" className="size-8 rounded-lg" aria-label="Close menu">
-                    <X className="size-4" />
-                  </Button>
-                </SheetClose>
               </div>
 
               {/* Drawer Menu List Matching User Reference Image */}
@@ -410,7 +405,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Right Action Area (Responsive on all devices) */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {/* Language Selector (desktop & tablet) */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -470,24 +465,26 @@ export function SiteHeader() {
               </Button>
             </>
           ) : (
-            <Button asChild variant="outline" size="sm" className="h-9 gap-1.5 rounded-xl px-3 text-xs sm:text-sm">
-              <Link to="/auth">
-                <LogIn className="size-3.5 sm:size-4 text-primary" />
-                <span>Log in</span>
-              </Link>
-            </Button>
-          )}
+            <>
+              <Button asChild variant="outline" size="sm" className="h-9 gap-1.5 rounded-xl px-3 text-xs sm:text-sm">
+                <Link to="/auth">
+                  <LogIn className="size-3.5 sm:size-4 text-primary" />
+                  <span>Log in</span>
+                </Link>
+              </Button>
 
-          {/* Create QR Code Primary Button */}
-          <Button
-            asChild
-            size="sm"
-            className="hidden sm:inline-flex h-9 rounded-xl bg-brand-gradient px-3.5 sm:px-4 font-semibold text-primary-foreground shadow-brand hover:opacity-95"
-          >
-            <Link to="/">
-              <Plus className="mr-1 size-4" /> Create QR
-            </Link>
-          </Button>
+              {/* Create QR Code Primary Button */}
+              <Button
+                asChild
+                size="sm"
+                className="hidden sm:inline-flex h-9 rounded-xl bg-brand-gradient px-3.5 sm:px-4 font-semibold text-primary-foreground shadow-brand hover:opacity-95"
+              >
+                <Link to="/">
+                  <Plus className="mr-1 size-4" /> Create QR
+                </Link>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>
